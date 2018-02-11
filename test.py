@@ -30,9 +30,9 @@ a.sort(key=sorti)
 print(a)
 
 #a = [‘ba’, ‘e’, ‘wqrt’, ‘frt’, ‘povrt’] -> b = [‘ba’, ‘e’, ‘frt’, ‘povrt’, ‘wqrt’]
-a1 = ['ba', 'e', 'wqrt', 'frt', 'povrt']
+a1 = ["ba", "e", "wqrt", "frt", "povrt"]
 random.shuffle(a1)
-def sorti(i):
+def sort(i):
     return i[0]
-a1.sort(key=sorti)
+a1.sort(key=sort)
 print(a1)
