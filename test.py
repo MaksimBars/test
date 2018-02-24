@@ -141,4 +141,4 @@ if key in b:
 #17) Дана строка ‘Eat more of these soft French rolls, but drink some tea.’
 # подсчитать количество каждой буквы в этой фразу и записать в  словарь где ключ буква - количество занчение.
 #  Пробелы и запятые не считаем. Только буквы.
-
+a = 'Eat more of these soft French rolls, but drink some tea.'
