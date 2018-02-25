@@ -2,6 +2,7 @@ import random
 import collections
 import math
 import json
+import re
 #1) a = [‘hello’, 1, ‘my’, 2, ‘dear’, 3, ‘friend’] -> b = [‘hello’, ‘my’,  ‘dear’, ‘friend’]
 a = ["hello", 1, "my", 2, "dear", 3, "friend"]
 del a[1::2]
@@ -69,8 +70,9 @@ print(a)
 #TypeError: unhashable type: 'list'
 #Почему нельзя так сделать? И как мне последовательность чисел а, сделать ключем словаря d?
 a = [1,2,3,4,5]
-d = dict.fromkeys(a)
-print(b)
+b = tuple(a)
+d = {b: 'a'}
+print(d)
 #9) a = [3, 2, 5,7,10, 1,] b = [10, 9, 0, 4, 3, 2] найти пересечение списков, найти разницу списков
 a = [3, 2, 5,7,10, 1]
 b = [10, 9, 0, 4, 3, 2]
@@ -142,3 +144,11 @@ if key in b:
 # подсчитать количество каждой буквы в этой фразу и записать в  словарь где ключ буква - количество занчение.
 #  Пробелы и запятые не считаем. Только буквы.
 a = 'Eat more of these soft French rolls, but drink some tea.'
+b = re.findall(r'\w', a)
+d = dict()
+for i in b:
+    if i not in d:
+        d[i] = 1
+    else:
+        d[i] +=1
+print(d)
