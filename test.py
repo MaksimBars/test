@@ -176,3 +176,6 @@ print(c)
 #20) есть дикт a = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
 # хочу узнать количество бананов и хочу чтобы картошки было 17
 a = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
+print(a['eat']['fruit']['bananas'])
+a['eat']['vegetables']['potato'] = 17
+print(a)
