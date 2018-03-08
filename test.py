@@ -176,6 +176,41 @@ print(c)
 #20) есть дикт a = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
 # хочу узнать количество бананов и хочу чтобы картошки было 17
 a = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
-print(a['eat']['fruit']['bananas'])
-a['eat']['vegetables']['potato'] = 17
-print(a)
+#print(a['eat']['fruit']['bananas'])
+key = 'bananas'
+b = a['eat']['fruit']
+if key in b:
+    print(b.get(key))
+#a['eat']['vegetables']['potato'] = 17
+#print(a)
+key = 'potato'
+b = a['eat']['vegetables']
+if key in b:
+    b[key] = 17
+    print(a)
+#21) сделать две функции первая - куда я в качестве параметров передаю мой dict a из 20 задания
+#  мне должно вернуться количество лимонов,вторая - в качестве параметров принимает мой дикт,
+# и количество моркови и мне возвращается новый дикт с измененным количеством морковки.
+#21-1 функция
+food = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
+def box(x):
+    key = 'lemon'
+    b = x['eat']['fruit']
+    if key in b:
+        return key,b.get(key)
+print(box(food))
+#21-2 функция
+food = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
+def how_carrot(x,y):
+    key = 'carrot'
+    b = x['eat']['vegetables']
+    if key in b:
+        b[key] = y
+        return x
+print(how_carrot(food, int(input('Количество моркови:'))))
+#22 a = [1,2,3,4,5] -> b = [1,3,6,10,15]
+a = [1,2,3,4,5]
+def mat(arr):
+    arr = [int(x) for x in arr] if  any(map(lambda x: True if isinstance(x, str) else False, arr)) else arr
+    return  [sum(arr[:x]) for x in range(arr[0],len(arr)+1)]
+print(mat(a))
