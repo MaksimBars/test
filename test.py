@@ -193,24 +193,26 @@ if key in b:
 # и количество моркови и мне возвращается новый дикт с измененным количеством морковки.
 #21-1 функция
 food = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
+key1 = 'eat'
+key2 = 'fruit'
+key3 = 'lemon'
 def box(x):
-    key = 'lemon'
-    b = x['eat']['fruit']
-    if key in b:
-        return key,b.get(key)
+    b = x[key1][key2]
+    if key3 in b:
+        return key3,b.get(key3)
 print(box(food))
 #21-2 функция
 food = {'eat': {'fruit' : {'bananas': 15, 'lemon': 11}, 'vegetables': {'carrot': 10,'potato': 5}}}
+key_1 = 'eat'
+key_2 = 'vegetables'
+key_3 = 'carrot'
 def how_carrot(x,y):
-    key = 'carrot'
-    b = x['eat']['vegetables']
-    if key in b:
-        b[key] = y
+    b = x[key_1][key_2]
+    if key_3 in b:
+        b[key_3] = y
         return x
 print(how_carrot(food, int(input('Количество моркови:'))))
 #22 a = [1,2,3,4,5] -> b = [1,3,6,10,15]
 a = [1,2,3,4,5]
-def mat(arr):
-    arr = [int(x) for x in arr] if  any(map(lambda x: True if isinstance(x, str) else False, arr)) else arr
-    return  [sum(arr[:x]) for x in range(arr[0],len(arr)+1)]
-print(mat(a))
+b= [sum(a[:x]) for x in range(a[0],len(a)+1)]
+print(b)
