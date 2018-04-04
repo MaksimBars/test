@@ -216,3 +216,26 @@ print(how_carrot(food, int(input('Количество моркови:'))))
 a = [1,2,3,4,5]
 b= [sum(a[:x]) for x in range(a[0],len(a)+1)]
 print(b)
+#23 надо сделать три функции. первая функция - главная(допустим main) - в ней необходимо получать строку с ввода с консоли
+#-это должно быть число, далее в зависимости от того, четное это число или нет делаем следующее:
+# Если четное - вызывать функцию (int_sum) и передать туда в качестве параметра полученное с ввода число и внутри функции
+# int_sum суммировать его с самим собой и вернуть результат в функцию main.# Если нечетное вызвать функцию (int_mult)
+# и передать туда на в качестве параметра введеное число, внутри функции int_mult его возвести в куб и вернуть функции main.
+#  В функции main полученный результат распечатать в консоль.
+
+def int_sum(number):
+    sum_number = number + number
+    return sum_number
+
+def int_mult(number):
+    mult_number = number ** number
+    return mult_number
+
+def main():
+    number = int(input("Input number: "))
+    if number % 2 == 0:
+        print(int_sum(number))
+    else:
+        print(int_mult(number))
+if __name__ == '__main__':
+    main()
