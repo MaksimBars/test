@@ -3,15 +3,13 @@
 # (только для этого задания - если мы не передаем никакого животного - по умолчанию оно должно
 #  чирикать как птичка)
 
+name = str(input())
+animals = {"cat": 'may-may', "dog": 'gay-gay', "parrot": 'chirik-chirik', "pig": 'xry-xry', "cow": 'my-my'}
+
 
 def main():
-    animal = str(input())
-    if animal == 'cat':
-        print('may-may')
-    elif animal == 'dog':
-        print('gay-gay')
-    elif animal == 'parrot':
-        print('chirik-chirik')
+    if name in animals:
+        print(animals.get(name))
     else:
         print('kar-kar')
 
