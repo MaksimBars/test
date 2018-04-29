@@ -340,3 +340,20 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# 26. Сделать тот же функционал как в 25 задании только с помощью декораторов,
+# три декоратора на трех животных
+
+
+def cat(func):
+    def sound_cat():
+        print('may-may')
+    return sound_cat
+
+
+@cat
+def sound():
+    print('kar-kar')
+
+
+print(sound())
