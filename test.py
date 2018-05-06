@@ -322,7 +322,7 @@ def a():
 
 print(a())
 
-# 25.Нужно функцию, которая будет имитировать звуки животных домашних - кошку, собаку, птичку.
+# 25) Нужно функцию, которая будет имитировать звуки животных домашних - кошку, собаку, птичку.
 #  На вход подается тип животного строкой - dog, cat, parrot - на выходе издаваемые ими звуки,
 # (только для этого задания - если мы не передаем никакого животного - по умолчанию оно должно
 #  чирикать как птичка)
@@ -341,19 +341,67 @@ def main():
 if __name__ == '__main__':
     main()
 
-# 26. Сделать тот же функционал как в 25 задании только с помощью декораторов,
+# 26) Сделать тот же функционал как в 25 задании только с помощью декораторов,
 # три декоратора на трех животных
 
-
-def cat(func):
-    def sound_cat():
-        print('may-may')
-    return sound_cat
+name = str(input("Name of the animal: "))
+animals = {'cat': 'may-may', 'dog': 'gay-gay', 'parrot': 'chirik-chirik'}
 
 
-@cat
+def animal_sound(func):
+    def sound_in():
+        return animals.get(name)
+
+    def not_sound():
+        return 'kar-kar'
+
+    if name in animals:
+        return sound_in
+    else:
+        return not_sound
+
+
+@animal_sound
 def sound():
-    print('kar-kar')
+    return name
 
 
 print(sound())
+
+
+# 28) Сделать как в задании 25, только классами. Есть класс животные, и у него метод sound так вот класс
+# кат, дог и птичка, должны быть потомками класса животные и иметь свой метод саунд,
+# по умолчанию метод (класса животные )саунд каркает.
+
+
+class Animals:
+    def sound(self):
+        print('kar-kar')
+
+
+class Cat(Animals):
+    def sound(self):
+        print('may-may')
+
+
+class Bird(Animals):
+    def sound(self):
+        print('chirik-chirik')
+
+
+class Dog(Animals):
+    def sound(self):
+        print('gav-gav')
+
+
+animal = Animals()
+animal.sound()
+
+dog = Dog()
+dog.sound()
+
+bird = Bird()
+bird.sound()
+
+cat = Cat()
+cat.sound()
