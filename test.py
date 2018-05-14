@@ -1,3 +1,4 @@
+import os
 import random
 import json
 import re
@@ -327,7 +328,7 @@ print(a())
 # (только для этого задания - если мы не передаем никакого животного - по умолчанию оно должно
 #  чирикать как птичка)
 
-name = str(input("Enter the name: "))
+name = (input("Enter the name: "))
 animals = {"cat": 'may-may', "dog": 'gay-gay', "parrot": 'chirik-chirik', "pig": 'xry-xry', "cow": 'my-my'}
 
 
@@ -344,7 +345,7 @@ if __name__ == '__main__':
 # 26) Сделать тот же функционал как в 25 задании только с помощью декораторов,
 # три декоратора на трех животных
 
-name = str(input("Name of the animal: "))
+name = input("Name of the animal: ")
 animals = {'cat': 'may-may', 'dog': 'gay-gay', 'parrot': 'chirik-chirik'}
 
 
@@ -367,6 +368,65 @@ def sound():
 
 
 print(sound())
+
+
+# 27. у нас есть переменная path, там есть какой-то путь до папки, так вот по этому пути создать файл
+# - записать в него приветствие, далее создать 10 его копий в этой же папке,  добавляя к имени +1
+# (к примеру файл называется new.txt значит копия будет new1.txt, new2.txt, new3.txt).
+# Создание файла и запись в него данных должно быть реализовано в функции. Создание копий тоже отдельная
+# функция, на вход как и в первой функции подается путь к папке, по нему мы смотрим, есть ли там файлы
+# и на каждый файл создаем 10 копий. если там был только new.txt - значит создать new{1-10}.txt,
+# если там уже есть копии нашего файла,на ээти копии создать еще копии, на new1.txt - new1{1-10}.txt,
+# если такие файлы уже есть вместо цифра подставлять существующее имя файла + copy, к примеру у нас уже
+# есть new.txt  new1.txt и когда мы снова будем создавать 10 копий мы получим что из new.txt надо снова
+# создать new1.txt - то если такой файл уже есть сделать new1(copy).txt
+
+path = '/home/maksim/PycharmProjects/123/'
+name = 'new.txt'
+
+
+def create_copy(path, name):
+    file_name = os.path.splitext(name)
+    if search(path, 'new1.txt') is False:
+        for i in range(1, 11):
+            new_name = '{0}{1}{2}'.format(file_name[0], i, file_name[1])
+            create_file(path, new_name)
+    elif search(path, 'new1-1.txt') is False:
+        for i in range(1, 11):
+            for x in range(1, 11):
+                new_name = '{0}{1}{2}{3}'.format(file_name[0], i, -x, file_name[1])
+                create_file(path, new_name)
+    elif search(path, 'new1(copy).txt') is False:
+        for i in range(1, 11):
+            new_name = '{0}{1}{2}{3}'.format(file_name[0], i, '(copy)', file_name[1])
+            create_file(path, new_name)
+    else:
+        print("All copies created")
+
+
+def create_file(path, name):
+    with open(os.path.join(path, name), 'w') as opened_file:
+        opened_file.write('Hello!!!!')
+        print('The record is successful')
+    return create_file
+
+
+def search(path, name):
+    if os.path.isfile(os.path.join(path, name)):
+        return True
+    else:
+        return False
+
+
+def main():
+    if search(path, name) is True:
+        create_copy(path, name)
+    else:
+        create_file(path, name)
+
+
+if __name__ == "__main__":
+    main()
 
 
 # 28) Сделать как в задании 25, только классами. Есть класс животные, и у него метод sound так вот класс
