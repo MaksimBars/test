@@ -345,26 +345,45 @@ if __name__ == '__main__':
 # 26) Сделать тот же функционал как в 25 задании только с помощью декораторов,
 # три декоратора на трех животных
 
-name = input("Name of the animal: ")
-animals = {'cat': 'may-may', 'dog': 'gay-gay', 'parrot': 'chirik-chirik'}
+names = input("Name of the animal: ")
+animals = ('cat', 'dog', 'parrot')
 
 
-def animal_sound(func):
-    def sound_in():
-        return animals.get(name)
-
-    def not_sound():
-        return 'kar-kar'
-
-    if name in animals:
-        return sound_in
-    else:
-        return not_sound
+def cat(func):
+    def wrapper():
+        if func() == 'cat':
+            return 'may-may'
+        else:
+            return func()
+    return wrapper
 
 
-@animal_sound
+def dog(func):
+    def wrapper():
+        if func() == 'dog':
+            return 'gay-gay'
+        else:
+            return func()
+    return wrapper
+
+
+def parrot(func):
+    def wrapper():
+        if func() == 'parrot':
+            return 'chirik-chirik'
+        else:
+            return func()
+    return wrapper
+
+
+@parrot
+@cat
+@dog
 def sound():
-    return name
+    if names in animals:
+        return names
+    else:
+        return 'kar-kar'
 
 
 print(sound())
