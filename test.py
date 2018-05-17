@@ -406,18 +406,21 @@ name = 'new.txt'
 
 def create_copy(path, name):
     file_name = os.path.splitext(name)
-    if search(path, 'new1.txt') is False:
+    part_one = file_name[0]
+    part_two = file_name[1]
+    file_one, file_two, file_three = 'new1.txt', 'new1-1.txt', 'new1(copy).txt'
+    if search(path, file_one) is False:
         for i in range(1, 11):
-            new_name = '{0}{1}{2}'.format(file_name[0], i, file_name[1])
+            new_name = '{0}{1}{2}'.format(part_one, i, part_two)
             create_file(path, new_name)
-    elif search(path, 'new1-1.txt') is False:
+    elif search(path, file_two) is False:
         for i in range(1, 11):
             for x in range(1, 11):
-                new_name = '{0}{1}{2}{3}'.format(file_name[0], i, -x, file_name[1])
+                new_name = '{0}{1}{2}{3}'.format(part_one, i, -x, part_two)
                 create_file(path, new_name)
-    elif search(path, 'new1(copy).txt') is False:
+    elif search(path, file_three) is False:
         for i in range(1, 11):
-            new_name = '{0}{1}{2}{3}'.format(file_name[0], i, '(copy)', file_name[1])
+            new_name = '{0}{1}{2}{3}'.format(part_one, i, '(copy)', part_two)
             create_file(path, new_name)
     else:
         print("All copies created")
