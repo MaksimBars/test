@@ -487,3 +487,67 @@ bird.sound()
 
 cat = Cat()
 cat.sound()
+
+
+# 29)Поменять местами значения key|value
+a = {'apple': 1, 'avocado': 2, 'apricot': 3, 'banana': 4, 'fig': 5}
+new_a = dict((v, k) for k, v in a.items())
+print(new_a)
+
+
+# 30)1.Написать функцию, которая принимает на вход аргумент, и печатает его при вызове функции.
+# 2.Написать функцию, которая аргументом на вход принимает число, и печатает от 0 до принятого числа при вызове функции.
+# К примеру аргументом в функцию отдаю 5, мне функция должна распечатать 0,1,2,3,4.
+# 3.Написать функцию, которая на вход принимает параметр, внутри этой функции надо определить число это или нет,
+# если это число вызвать функцию из 2 задания и отдать полученный цифровой аргумент, если это не число отдать
+# его функции из 1 задания как аргумент.
+# Например: я на вход функции отдаю 'Hello world' так как это строка я вызываю функцию 1 и просто печатаю строку.
+# Теперь я отдаю функции 4 на вход, так как эта число я вызываю функцию из задания 2 и отдаю аргументом число
+# и получаю 0,1,2,3
+
+def first_function(args):
+    a = type(args).__name__
+    print("Type entered: {}. Text is inside: {}".format(a, args))
+
+
+def second_function(number):
+    for x in range(number):
+        print(x, end=",")
+
+
+def third_function(args):
+    try:
+        int(args)
+        second_function(args)
+    except ValueError:
+        first_function(args)
+
+
+third_function('Hello world')
+third_function(10)
+
+
+# 31)1.написать функцию, которая генерирует случайное целое число от 1 до 1000 и возвращает его.
+# 2.написать функцию, которая принимает на вход результат работы первой функции,
+# и проверяет является ли число четным или нет, если оно является четным,
+# дозаписать его в файл четные.txt, если является нечетным дозаписать его в файл нечетные.txt
+def random_number():
+    number = random.randint(1, 1000)
+    return number
+
+
+def second_func(random_number):
+    if random_number % 2 == 0:
+        write('четные.txt')
+    else:
+        write('нечетные.txt')
+
+
+def write(text):
+    with open(text, 'a') as opened_file:
+        opened_file.write(str(random_number()) + '\n')
+        return write
+
+
+second_func(random_number())
+print(random_number())
