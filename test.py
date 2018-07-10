@@ -546,7 +546,6 @@ def second_func(random_number):
 def write(text):
     with open(text, 'a') as opened_file:
         opened_file.write(str(random_number()) + '\n')
-        return write
 
 
 second_func(random_number())
